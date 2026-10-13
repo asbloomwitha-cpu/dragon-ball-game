@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Juego web táctico de combate por turnos basado en el anime Dragon Ball Z. Selección de personajes, barras de Ki, energía y vida, semillas del ermitaño y ataques especiales.">
+    <meta name="author" content="Tecnológico Nacional de México - Instituto Tecnológico de Milpa Alta II">
+    <meta name="theme-color" content="#ff3366">
+    <title>DRAGON BALL GAME - Torneo Táctico por Turnos</title>
+    <link rel="icon" type="image/png" href="./public/img/favico.png">
+</head>
+
+<body>
+    <div class="container py-4">
+        <!-- Encabezado Principal del Juego -->
+        <header class="row justify-content-center mb-4">
+            <div class="col-12 text-center">
+                <h1 class="main-title display-4">
+                    <i class="fa-solid fa-dragon me-2"></i>DRAGON BALL GAME<i class="fa-solid fa-dragon ms-2"></i>
+                </h1>
+                <p class="text-light opacity-75 fs-5">Torneo de Guerreros Z • Combate Táctico por Turnos</p>
+            </div>
+        </header>
+
+        <!-- Etapa 1: Selección de Personajes (Turnos) -->
+        <main id="selection-stage">
+            <div class="row justify-content-center g-4">
+                <!-- Tarjeta de Selección del Jugador 1 -->
+                <div id="py1-container" class="col-12 col-lg-6">
+                    <div class="dbz-card dbz-card-p1 h-100">
+                        <h2 class="text-center mb-3 h3" style="color: var(--p1-color); font-family: 'Orbitron', sans-serif;">
+                            <i class="fa-solid fa-user-ninja me-2"></i>JUGADOR 1
+                        </h2>
+                        
+                        <!-- Input Nombre Jugador 1 -->
+                        <div class="form-floating mb-3">
+                            <input type="text" id="player1" class="form-control" placeholder="Nombre (solo letras y números)" maxlength="15" autocomplete="off">
+                            <label class="text-danger" for="player1">
+                                <i class="fa-solid fa-user me-2"></i>Nombre de usuario (letras y números)
+                            </label>
+                        </div>
+                        <div class="small text-light opacity-75 mb-3 text-center">
+                            * Solo letras y números, sin espacios ni símbolos
+                        </div>
+
+                        <p class="text-center fw-bold text-light mb-3">ELIGE A TU GUERRERO Z</p>
+                        
+                        <!-- Grilla de los 8 Guerreros para Jugador 1 -->
+                        <div id="py1" class="row justify-content-center g-3 text-center">
+                            <div class="col-3">
+                                <img class="img-fluid char-portrait char-p1"
+                                    src="./public/img/seleccion/sc05.webp" alt="Goku" data-character="Goku" title="Goku">
+                                <div class="small mt-1 text-light fw-bold">Goku</div>
+                            </div>
+                            <div class="col-3">
+                                <img class="img-fluid char-portrait char-p1"
+                                    src="./public/img/seleccion/sc02.webp" alt="Veguetta" data-character="Veguetta" title="Veguetta">
+                                <div class="small mt-1 text-light fw-bold">Vegeta</div>
+                            </div>
+                            <div class="col-3">
+                                <img class="img-fluid char-portrait char-p1"
+                                    src="./public/img/seleccion/sc06.webp" alt="Gohan" data-character="Gohan" title="Gohan">
+                                <div class="small mt-1 text-light fw-bold">Gohan</div>
+                            </div>
+                            <div class="col-3">
+                                <img class="img-fluid char-portrait char-p1"
+                                    src="./public/img/seleccion/sc04.webp" alt="Pikoro" data-character="Pikoro" title="Pikoro">
+                                <div class="small mt-1 text-light fw-bold">Piccolo</div>
+                            </div>
+                            <div class="col-3">
+                                <img class="img-fluid char-portrait char-p1"
+                                    src="./public/img/seleccion/sc03.webp" alt="Trunks" data-character="Trunks" title="Trunks">
+                                <div class="small mt-1 text-light fw-bold">Trunks</div>
+                            </div>
+                            <div class="col-3">
+                                <img class="img-fluid char-portrait char-p1"
+                                    src="./public/img/seleccion/sc08.webp" alt="Cell" data-character="Cell" title="Cell">
+                                <div class="small mt-1 text-light fw-bold">Cell</div>
+                            </div>
+                            <div class="col-3">
+                                <img class="img-fluid char-portrait char-p1"
+                                    src="./public/img/seleccion/sc01.webp" alt="Vegitto" data-character="Vegitto" title="Vegitto">
+                                <div class="small mt-1 text-light fw-bold">Vegito</div>
+                            </div>
+                            <div class="col-3">
+                                <img class="img-fluid char-portrait char-p1"
+                                    src="./public/img/seleccion/sc07.webp" alt="Gogeta" data-character="Gogeta" title="Gogeta">
+                                <div class="small mt-1 text-light fw-bold">Gogeta</div>
+                            </div>
+                        </div>
+
+                        <button id="btn_player1" type="button" class="btn btn-dbz-p1 w-100 py-3 mt-4">
+                            CONFIRMAR JUGADOR 1 <i class="fa-solid fa-check-circle ms-2"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tarjeta de Selección del Jugador 2 -->
+                <div id="py2-container" class="col-12 col-lg-6">
+                    <div class="dbz-card dbz-card-p2 h-100">
+                        <h2 class="text-center mb-3 h3" style="color: var(--p2-color); font-family: 'Orbitron', sans-serif;">
+                            <i class="fa-solid fa-user-ninja me-2"></i>JUGADOR 2
+                        </h2>
+                        
+                        <!-- Input Nombre Jugador 2 -->
+                        <div class="form-floating mb-3">
+                            <input type="text" id="player2" class="form-control" placeholder="Nombre (solo letras y números)" maxlength="15" autocomplete="off">
+                            <label class="text-primary" for="player2">
+                                <i class="fa-solid fa-user me-2"></i>Nombre de usuario (letras y números)
+                            </label>
+                        </div>
+                        <div class="small text-light opacity-75 mb-3 text-center">
+                            * Solo letras y números, sin espacios ni símbolos
+                        </div>
+
+                        <p class="text-center fw-bold text-light mb-3">ELIGE A TU GUERRERO Z</p>
+
+                        <!-- Grilla de los 8 Guerreros para Jugador 2 -->
+                        <div id="py2" class="row justify-content-center g-3 text-center">
+                            <div class="col-3">
+                                <img class="img-fluid char-portrait char-p2"
+                                    src="./public/img/seleccion/sc05.webp" alt="Goku" data-character="Goku" title="Goku">
+                                <div class="small mt-1 text-light fw-bold">Goku</div>
+                            </div>
+                            <div class="col-3">
+                                <img class="img-fluid char-portrait char-p2"
+                                    src="./public/img/seleccion/sc02.webp" alt="Veguetta" data-character="Veguetta" title="Veguetta">
+                                <div class="small mt-1 text-light fw-bold">Vegeta</div>
+                            </div>
+                            <div class="col-3">
+                                <img class="img-fluid char-portrait char-p2"
+                                    src="./public/img/seleccion/sc06.webp" alt="Gohan" data-character="Gohan" title="Gohan">
+                                <div class="small mt-1 text-light fw-bold">Gohan</div>
+                            </div>
+                            <div class="col-3">
+                                <img class="img-fluid char-portrait char-p2"
+                                    src="./public/img/seleccion/sc04.webp" alt="Pikoro" data-character="Pikoro" title="Pikoro">
+                                <div class="small mt-1 text-light fw-bold">Piccolo</div>
+                            </div>
+                            <div class="col-3">
+                                <img class="img-fluid char-portrait char-p2"
+                                    src="./public/img/seleccion/sc03.webp" alt="Trunks" data-character="Trunks" title="Trunks">
+                                <div class="small mt-1 text-light fw-bold">Trunks</div>
+                            </div>
+                            <div class="col-3">
+                                <img class="img-fluid char-portrait char-p2"
+                                    src="./public/img/seleccion/sc08.webp" alt="Cell" data-character="Cell" title="Cell">
+                                <div class="small mt-1 text-light fw-bold">Cell</div>
+                            </div>
+                            <div class="col-3">
+                                <img class="img-fluid char-portrait char-p2"
+                                    src="./public/img/seleccion/sc01.webp" alt="Vegitto" data-character="Vegitto" title="Vegitto">
+                                <div class="small mt-1 text-light fw-bold">Vegito</div>
+                            </div>
+                            <div class="col-3">
+                                <img class="img-fluid char-portrait char-p2"
+                                    src="./public/img/seleccion/sc07.webp" alt="Gogeta" data-character="Gogeta" title="Gogeta">
+                                <div class="small mt-1 text-light fw-bold">Gogeta</div>
+                            </div>
+                        </div>
+
+                        <button id="btn_player2" type="button" class="btn btn-dbz-p2 w-100 py-3 mt-4">
+                            CONFIRMAR JUGADOR 2 <i class="fa-solid fa-check-circle ms-2"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Cuenta regresiva antes de comenzar el combate -->
+        <section id="loading-stage" class="d-none text-center py-5">
+            <div class="dbz-card mx-auto" style="max-width: 400px;">
+                <h2 class="text-warning">Preparando el combate...</h2>
+                <p class="text-light mb-2">El combate comienza en:</p>
+                <div id="loading-count" class="display-1 fw-bold text-warning pulse-anim">3</div>
+            </div>
+        </section>
+
+        <!-- Etapa 2: Escenario de Batalla -->
+        <section id="battle-stage" class="d-none">
+            <!-- Barra Superior de Navegación y Turno -->
+            <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-3">
+                <div class="text-warning fw-bold fs-5">
+                    <i class="fa-solid fa-khanda me-2"></i>ARENA DE COMBATE SAIYAJIN
+                </div>
+                <button id="btn_back_to_selection" type="button" class="btn btn-dbz-secondary px-3 py-2">
+                    <i class="fa-solid fa-arrow-left me-2"></i>Regresar a Selección
+                </button>
+            </div>
+
+            <!-- Banner Visual del Turno Actual -->
+            <div id="turno-banner" class="turno-banner text-center py-2 px-3 mb-3">
+                <i class="fa-solid fa-bolt me-2"></i>TURNO ACTUAL: JUGADOR 1
+            </div>
+
+            <div class="row g-4">
+                <!-- Arena del Jugador 1 -->
+                <div class="col-12 col-md-6">
+                    <div id="p1-arena" class="arena-card dbz-card-p1">
+                        <!-- Encabezado con Nombre y Personaje -->
+                        <div class="player-header">
+                            <div id="username1" class="player-username text-danger">JUGADOR 1</div>
+                            <div id="personaje1" class="player-char-name">PERSONAJE 1</div>
+                        </div>
+
+                        <!-- Burbuja de Diálogo de Anime -->
+                        <div id="p1-dialogo-box" class="dialogo-bubble dialogo-bubble-p1 d-none">
+                            "¡Estoy listo para pelear!"
+                        </div>
+                        
+                        <!-- Contenedor del Sprite del Guerrero -->
+                        <div class="fighter-img-container">
+                            <img id="img1" class="fighter-img" src="" alt="Luchador Jugador 1">
+                        </div>
+
+                        <!-- Barras de Estado -->
+                        <div class="stats-panel mb-3">
+                            <div class="stat-label text-danger">
+                                <span><i class="fa-solid fa-heart me-1"></i> Vida</span>
+                                <span id="p1-hp-text">100/100</span>
+                            </div>
+                            <div class="progress">
+                                <div id="p1-hp-bar" class="progress-bar bg-hp" role="progressbar" style="width: 100%;"></div>
+                            </div>
+
+                            <div class="stat-label text-info">
+                                <span><i class="fa-solid fa-bolt me-1"></i> Ki</span>
+                                <span id="p1-ki-text">100/100</span>
+                            </div>
+                            <div class="progress">
+                                <div id="p1-ki-bar" class="progress-bar bg-ki" role="progressbar" style="width: 100%;"></div>
+                            </div>
+
+                            <div class="stat-label text-warning">
+                                <span><i class="fa-solid fa-fire me-1"></i> Energía</span>
+                                <span id="p1-energy-text">100/100</span>
+                            </div>
+                            <div class="progress">
+                                <div id="p1-energy-bar" class="progress-bar bg-energy" role="progressbar" style="width: 100%;"></div>
+                            </div>
+
+                            <div class="d-flex justify-content-between align-items-center mt-2 px-1">
+                                <span class="badge bg-success py-2 px-3 fs-6">
+                                    <i class="fa-solid fa-seedling me-1"></i> Semillas del Ermitaño: <b id="p1-seed-text">2</b> / 2
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Botones de Acción J1 -->
+                        <div class="action-grid">
+                            <button id="p1-btn-atk-basico" class="btn btn-action btn-atk-basico">
+                                <i class="fa-solid fa-hand-fist me-1"></i> Atk Básico
+                            </button>
+                            <button id="p1-btn-atk-especial" class="btn btn-action btn-atk-especial">
+                                <i class="fa-solid fa-wand-magic-sparkles me-1"></i> Atk Especial
+                            </button>
+                            <button id="p1-btn-carga" class="btn btn-action btn-carga">
+                                <i class="fa-solid fa-bolt me-1"></i> Cargar Ki
+                            </button>
+                            <button id="p1-btn-curacion" class="btn btn-action btn-curacion">
+                                <i class="fa-solid fa-kit-medical me-1"></i> Curación (Semilla)
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Arena del Jugador 2 -->
+                <div class="col-12 col-md-6">
+                    <div id="p2-arena" class="arena-card dbz-card-p2">
+                        <!-- Encabezado con Nombre y Personaje -->
+                        <div class="player-header">
+                            <div id="username2" class="player-username text-info">JUGADOR 2</div>
+                            <div id="personaje2" class="player-char-name">PERSONAJE 2</div>
+                        </div>
+
+                        <!-- Burbuja de Diálogo de Anime -->
+                        <div id="p2-dialogo-box" class="dialogo-bubble dialogo-bubble-p2 d-none">
+                            "¡No tendrás oportunidad!"
+                        </div>
+
+                        <!-- Contenedor del Sprite del Guerrero -->
+                        <div class="fighter-img-container">
+                            <img id="img2" class="fighter-img" src="" alt="Luchador Jugador 2">
+                        </div>
+
+                        <!-- Barras de Estado -->
+                        <div class="stats-panel mb-3">
+                            <div class="stat-label text-danger">
+                                <span><i class="fa-solid fa-heart me-1"></i> Vida</span>
+                                <span id="p2-hp-text">100/100</span>
+                            </div>
+                            <div class="progress">
+                                <div id="p2-hp-bar" class="progress-bar bg-hp" role="progressbar" style="width: 100%;"></div>
+                            </div>
+
+                            <div class="stat-label text-info">
+                                <span><i class="fa-solid fa-bolt me-1"></i> Ki</span>
+                                <span id="p2-ki-text">100/100</span>
+                            </div>
+                            <div class="progress">
+                                <div id="p2-ki-bar" class="progress-bar bg-ki" role="progressbar" style="width: 100%;"></div>
+                            </div>
+
+                            <div class="stat-label text-warning">
+                                <span><i class="fa-solid fa-fire me-1"></i> Energía</span>
+                                <span id="p2-energy-text">100/100</span>
+                            </div>
+                            <div class="progress">
+                                <div id="p2-energy-bar" class="progress-bar bg-energy" role="progressbar" style="width: 100%;"></div>
+                            </div>
+
+                            <div class="d-flex justify-content-between align-items-center mt-2 px-1">
+                                <span class="badge bg-success py-2 px-3 fs-6">
+                                    <i class="fa-solid fa-seedling me-1"></i> Semillas del Ermitaño: <b id="p2-seed-text">2</b> / 2
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Botones de Acción J2 -->
+                        <div class="action-grid">
+                            <button id="p2-btn-atk-basico" class="btn btn-action btn-atk-basico">
+                                <i class="fa-solid fa-hand-fist me-1"></i> Atk Básico
+                            </button>
+                            <button id="p2-btn-atk-especial" class="btn btn-action btn-atk-especial">
+                                <i class="fa-solid fa-wand-magic-sparkles me-1"></i> Atk Especial
+                            </button>
+                            <button id="p2-btn-carga" class="btn btn-action btn-carga">
+                                <i class="fa-solid fa-bolt me-1"></i> Cargar Ki
+                            </button>
+                            <button id="p2-btn-curacion" class="btn btn-action btn-curacion">
+                                <i class="fa-solid fa-kit-medical me-1"></i> Curación (Semilla)
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Script empaquetado por Webpack -->
+    <script src="./bundle.js"></script>
+</body>
+
+</html>

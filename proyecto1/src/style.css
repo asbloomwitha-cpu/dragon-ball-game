@@ -1,0 +1,439 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@500;600;700&display=swap');
+
+:root {
+    --bg-dark: #0b0c10;
+    --card-bg: rgba(18, 22, 36, 0.88);
+    --p1-color: #ff3366;
+    --p1-glow: rgba(255, 51, 102, 0.6);
+    --p2-color: #00d2ff;
+    --p2-glow: rgba(0, 210, 255, 0.6);
+    --gold-accent: #ffcc00;
+    --gold-glow: rgba(255, 204, 0, 0.5);
+}
+
+body {
+    background: linear-gradient(135deg, rgba(9, 10, 15, 0.95) 0%, rgba(20, 24, 38, 0.95) 50%, rgba(13, 17, 26, 0.95) 100%), 
+                url('../dist/public/img/bg01.webp') no-repeat center center fixed;
+    background-size: cover;
+    color: #ffffff;
+    font-family: 'Rajdhani', sans-serif;
+    min-height: 100vh;
+    padding-bottom: 2.5rem;
+}
+
+/* Encabezado Principal */
+.main-title {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+    letter-spacing: 3px;
+    background: linear-gradient(90deg, #ff416c, #ff4b2b, #ffcc00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 25px rgba(255, 75, 43, 0.5);
+}
+
+/* Tarjetas Estilo Dragon Ball Glassmorphism */
+.dbz-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-radius: 18px;
+    padding: 2rem;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6);
+    transition: all 0.4s ease;
+}
+
+.dbz-card-p1 {
+    border: 2px solid var(--p1-color);
+    box-shadow: 0 0 20px var(--p1-glow);
+}
+
+.dbz-card-p2 {
+    border: 2px solid var(--p2-color);
+    box-shadow: 0 0 20px var(--p2-glow);
+}
+
+/* Grilla de Selección de Personajes */
+.char-portrait {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease, border-color 0.3s ease;
+    border: 3px solid transparent;
+}
+
+.char-portrait:hover {
+    transform: scale(1.18) rotate(4deg);
+}
+
+.char-p1 {
+    border-color: rgba(255, 51, 102, 0.4);
+    background-color: rgba(255, 51, 102, 0.15);
+}
+
+.char-p2 {
+    border-color: rgba(0, 210, 255, 0.4);
+    background-color: rgba(0, 210, 255, 0.15);
+}
+
+.char-portrait.selected-p1 {
+    box-shadow: 0 0 25px #ffcc00, 0 0 15px var(--p1-color);
+    border-color: var(--gold-accent) !important;
+    transform: scale(1.22);
+    animation: pulseGlow 1.5s infinite;
+}
+
+.char-portrait.selected-p2 {
+    box-shadow: 0 0 25px #ffcc00, 0 0 15px var(--p2-color);
+    border-color: var(--gold-accent) !important;
+    transform: scale(1.22);
+    animation: pulseGlow 1.5s infinite;
+}
+
+@keyframes pulseGlow {
+    0% { transform: scale(1.18); box-shadow: 0 0 15px var(--gold-accent); }
+    50% { transform: scale(1.25); box-shadow: 0 0 30px var(--gold-accent), 0 0 15px #fff; }
+    100% { transform: scale(1.18); box-shadow: 0 0 15px var(--gold-accent); }
+}
+
+/* Campos de Texto */
+.form-floating input.form-control {
+    background-color: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+.form-floating input.form-control:focus {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    border-color: var(--gold-accent);
+    box-shadow: 0 0 15px rgba(255, 204, 0, 0.4);
+}
+
+/* Botones de Confirmación */
+.btn-dbz-p1 {
+    background: linear-gradient(45deg, #e60039, #ff3366);
+    color: #fff;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px var(--p1-glow);
+    transition: all 0.3s ease;
+}
+
+.btn-dbz-p1:hover {
+    background: linear-gradient(45deg, #ff3366, #ff668c);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px var(--p1-glow);
+    color: #fff;
+}
+
+.btn-dbz-p2 {
+    background: linear-gradient(45deg, #0088cc, #00d2ff);
+    color: #fff;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px var(--p2-glow);
+    transition: all 0.3s ease;
+}
+
+.btn-dbz-p2:hover {
+    background: linear-gradient(45deg, #00d2ff, #66e5ff);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px var(--p2-glow);
+    color: #fff;
+}
+
+.btn-dbz-secondary {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    color: #e0e0e0;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.btn-dbz-secondary:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: var(--gold-accent);
+    color: var(--gold-accent);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 204, 0, 0.3);
+}
+
+/* Pantalla de Carga */
+.pulse-anim {
+    animation: countdownPulse 1s infinite;
+}
+
+@keyframes countdownPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+}
+
+/* Banner de Turno Dinámico */
+.turno-banner {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.15rem;
+    letter-spacing: 1px;
+    border-radius: 12px;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+}
+
+.turno-p1 {
+    background: rgba(255, 51, 102, 0.2);
+    border: 2px solid var(--p1-color);
+    color: #ff80a0;
+    box-shadow: 0 0 20px var(--p1-glow);
+}
+
+.turno-p2 {
+    background: rgba(0, 210, 255, 0.2);
+    border: 2px solid var(--p2-color);
+    color: #80e5ff;
+    box-shadow: 0 0 20px var(--p2-glow);
+}
+
+/* Arena de Combate */
+.arena-card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+.arena-activa {
+    transform: scale(1.02);
+    box-shadow: 0 0 35px var(--gold-glow), 0 8px 32px 0 rgba(0, 0, 0, 0.7);
+    opacity: 1;
+}
+
+.arena-inactiva {
+    opacity: 0.75;
+    filter: saturate(0.85);
+}
+
+.player-header {
+    text-align: center;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.player-username {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.player-char-name {
+    font-size: 1.15rem;
+    color: var(--gold-accent);
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* Burbujas de Diálogo de Anime */
+.dialogo-bubble {
+    position: relative;
+    background: #ffffff;
+    color: #111111;
+    border: 3px solid #ffcc00;
+    border-radius: 16px;
+    padding: 0.6rem 1rem;
+    margin: 0 auto 0.75rem auto;
+    max-width: 90%;
+    text-align: center;
+    font-weight: 700;
+    font-size: 0.95rem;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transform: translateY(-8px) scale(0.95);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 10;
+}
+
+.dialogo-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 12px 10px 0;
+    border-style: solid;
+    border-color: #ffcc00 transparent;
+    display: block;
+    width: 0;
+}
+
+.dialogo-bubble.dialogo-activo {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.dialogo-bubble-p1 {
+    border-color: var(--p1-color);
+}
+.dialogo-bubble-p1::after {
+    border-color: var(--p1-color) transparent;
+}
+
+.dialogo-bubble-p2 {
+    border-color: var(--p2-color);
+}
+.dialogo-bubble-p2::after {
+    border-color: var(--p2-color) transparent;
+}
+
+/* Contenedor e Imagen del Luchador */
+.fighter-img-container {
+    height: 270px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+}
+
+.fighter-img {
+    max-height: 250px;
+    max-width: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.3));
+    transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+.fighter-img.hit-effect {
+    animation: shake 0.4s ease;
+    filter: drop-shadow(0 0 30px #ff0033) brightness(1.3);
+}
+
+.fighter-img.power-effect {
+    animation: powerup 0.5s ease;
+    filter: drop-shadow(0 0 35px var(--gold-accent)) brightness(1.2);
+}
+
+@keyframes shake {
+    0% { transform: translate(0, 0); }
+    20% { transform: translate(-12px, 6px); }
+    40% { transform: translate(12px, -6px); }
+    60% { transform: translate(-10px, -4px); }
+    80% { transform: translate(8px, 6px); }
+    100% { transform: translate(0, 0); }
+}
+
+@keyframes powerup {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.12); }
+    100% { transform: scale(1); }
+}
+
+/* Barras de Estado */
+.stat-label {
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2px;
+}
+
+.progress {
+    height: 18px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 0.75rem;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.6);
+}
+
+.progress-bar {
+    transition: width 0.4s ease-in-out;
+}
+
+.bg-hp {
+    background: linear-gradient(90deg, #ff0055, #ff5500);
+}
+
+.bg-ki {
+    background: linear-gradient(90deg, #00d2ff, #0055ff);
+}
+
+.bg-energy {
+    background: linear-gradient(90deg, #ffcc00, #ff8800);
+}
+
+/* Grilla de Botones de Acción */
+.action-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.6rem;
+    margin-top: 1rem;
+}
+
+.btn-action {
+    font-weight: 700;
+    font-size: 0.88rem;
+    padding: 0.7rem 0.4rem;
+    border-radius: 10px;
+    border: none;
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    transition: all 0.2s ease;
+}
+
+.btn-action:hover:not(:disabled) {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6);
+}
+
+.btn-action:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.btn-atk-basico { background: linear-gradient(45deg, #d32f2f, #f44336); }
+.btn-atk-especial { background: linear-gradient(45deg, #7b1fa2, #9c27b0); }
+.btn-carga { background: linear-gradient(45deg, #f57c00, #ff9800); }
+.btn-curacion { background: linear-gradient(45deg, #2e7d32, #43a047); }
+
+/* SweetAlert2 DBZ Personalizado */
+.dbz-swal-popup {
+    border: 2px solid var(--gold-accent) !important;
+    border-radius: 18px !important;
+    box-shadow: 0 0 30px rgba(255, 204, 0, 0.4) !important;
+    font-family: 'Rajdhani', sans-serif !important;
+}
+
+.dbz-swal-popup .swal2-title {
+    font-family: 'Orbitron', sans-serif !important;
+    letter-spacing: 1px !important;
+    color: var(--gold-accent) !important;
+}
+
+.dbz-personaje-inicio {
+    animation: entradaPersonaje 1.2s ease-in-out infinite alternate;
+}
+
+@keyframes entradaPersonaje {
+    from {
+        transform: translateY(8px) scale(0.95);
+    }
+    to {
+        transform: translateY(-8px) scale(1.05);
+    }
+}
